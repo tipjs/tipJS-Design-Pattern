@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+<title>tipJS.com - Javascript MVC Framework Design Pattern</title>
+<script src="../../tipJS/tipJS-MVC-1.24.js"></script>
+<script>
+window.onload = function(){
+	tipJS.loadApp(["Adapter"]);
+};
+</script>
+</head>
+<body>
+<h1>tipJS.com - Javascript MVC Framework <br />Design Pattern</h1>
+    <h1 id="contentsA"></h1>
+    <input type="button" value="Request type A"
+    onclick="tipJS.action('Adapter.requestA')"/>
+    <input type="button" value="Request type B"
+    onclick="tipJS.action('Adapter.requestB')"/>
+    <input type="button" value="Request type C"
+    onclick="tipJS.action('Adapter.requestC')"/>
+<h4><a href="define.js" target="_blank">define.js</a></h4>
+<h4>Adapter Pattern</h4>
+<ul>
+	<li>controllers</li>
+	<ul>
+		<li><a href="controllers/requestA.js" target="_blank">requestA.js</a></li>
+		<li><a href="controllers/requestB.js" target="_blank">requestB.js</a></li>
+		<li><a href="controllers/requestC.js" target="_blank">requestC.js</a></li>
+	</ul>
+</ul>
+<ul>
+	<li>models</li>
+	<ul>
+		<li><a href="models/Adaptee.js" target="_blank">Adaptee.js</a></li>
+		<li><a href="models/Adapter.js" target="_blank">Adapter.js</a></li>
+		<li><a href="models/requestAImpl.js" target="_blank">requestAImpl.js</a></li>
+		<li><a href="models/requestBImpl.js" target="_blank">requestBImpl.js</a></li>
+		<li><a href="models/requestCImpl.js" target="_blank">requestCImpl.js</a></li>
+	</ul>
+</ul>
+</body>
+</html>
