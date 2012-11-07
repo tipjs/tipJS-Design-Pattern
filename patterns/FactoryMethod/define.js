@@ -11,8 +11,7 @@ tipJS.define({
 	noCache:false,
 	name:"FactoryMethod",
 	controllers:[
-		"requestCSV.js",
-		"requestJSON.js"
+		"request.js"
 	],
 	models:[
 		"ReaderFactory.js"

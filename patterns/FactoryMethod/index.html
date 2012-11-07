@@ -2,7 +2,7 @@
 <html lang="en">
 <meta charset="utf-8">
 <head>
-<title>tipJS.com - Javascript MVC Framework ModelSync Tutorial</title>
+<title>tipJS.com - Javascript MVC Framework Design Pattern</title>
 <script src="../../tipJS/tipJS-MVC-1.24.js"></script>
 <script>
 window.onload = function(){
@@ -11,28 +11,27 @@ window.onload = function(){
 </script>
 </head>
 <body>
-<h1>tipJS.com - Javascript MVC Framework <br />ModelSync Tutorial</h1>
-    <h1 id="contentsA"></h1>
-    <h1 id="contentsB"></h1>
-    <input type="button" value="Request CSV"
-    onclick="tipJS.action('FactoryMethod.requestCSV')"/>
-    <input type="button" value="Request JSON"
-    onclick="tipJS.action('FactoryMethod.requestJSON')"/>
+<h1>tipJS.com - Javascript MVC Framework <br />Design Pattern</h1>
+    <h1 id="contents"></h1>
+    <input type="radio" name="type" value="csv">CSV format
+    <input type="radio" name="type" value="json">JSON format
+    <input type="button" value="Request"
+    onclick="tipJS.action('FactoryMethod.request')"/>
 <h4><a href="define.js" target="_blank">define.js</a></h4>
-<h4>ModelSync</h4>
+<h4>Factory method</h4>
 <ul>
 	<li>controllers</li>
 	<ul>
-		<li><a href="controllers/controller1.js" target="_blank">controller1.js</a></li>
-		<li><a href="controllers/controller2.js" target="_blank">controller2.js</a></li>
-		<li><a href="controllers/controller3.js" target="_blank">controller3.js</a></li>
+		<li><a href="controllers/request.js" target="_blank">request.js</a></li>
 	</ul>
 </ul>
 <ul>
 	<li>models</li>
 	<ul>
-		<li><a href="models/modelA.js" target="_blank">modelA.js</a></li>
-		<li><a href="models/modelB.js" target="_blank">modelB.js</a></li>
+		<li><a href="models/ReaderImpl.js" target="_blank">ReaderImpl.js</a></li>
+		<li><a href="models/readerCSV.js" target="_blank">readerCSV.js</a></li>
+		<li><a href="models/readerJSON.js" target="_blank">readerJSON.js</a></li>
+		<li><a href="models/ReaderFactory.js" target="_blank">ReaderFactory.js</a></li>
 	</ul>
 </ul>
 </body>

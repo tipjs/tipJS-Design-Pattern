@@ -12,7 +12,10 @@ tipJS.model({
 	__extend : "FactoryMethod.ReaderImpl",
 	read : function(){
 		for (var i=0; i<this.data.length; i++) {
-			tipJS.log(this.data[i].key + ", " +this.data[i].value);
+			document.getElementById("contents").innerHTML += this.data[i].key;
+			document.getElementById("contents").innerHTML += ", ";
+			document.getElementById("contents").innerHTML += this.data[i].value;
+			document.getElementById("contents").innerHTML += "<br/>";
 		}
 	},
 	data : [

@@ -12,7 +12,8 @@ tipJS.model({
 	__extend : "FactoryMethod.ReaderImpl",
 	read : function(){
 		for (var i=0; i<this.data.length; i++) {
-			tipJS.log(this.data[i]);
+			document.getElementById("contents").innerHTML += this.data[i];
+			document.getElementById("contents").innerHTML += "<br/>";
 		}
 	},
 	data : [

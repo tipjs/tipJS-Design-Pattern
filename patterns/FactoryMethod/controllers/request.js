@@ -8,12 +8,16 @@
  */
 
 tipJS.controller({
-	name : "FactoryMethod.requestJSON",
+	name : "FactoryMethod.request",
 	invoke:function(params){
 		tipJS.debug(this.name + ".invoke");
 		
 		var readerFactory = this.loadModel("ReaderFactory");
-		var reader = readerFactory.getInstance("json");
-		reader.read();
+		var types = document.getElementsByName("type");
+		for (var i=0; i<types.length; i++) {
+			if (types[i].checked) {
+				readerFactory.getInstance(types[i].value).read();
+			}
+		}
 	}
 });
