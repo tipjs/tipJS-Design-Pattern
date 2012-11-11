@@ -24,8 +24,7 @@ tipJS.config({
 		,Adapter : '/tipJS-designPattern/patterns/Adapter'
 		,FactoryMethod : '/tipJS-designPattern/patterns/FactoryMethod'
 		,Facade : '/tipJS-designPattern/patterns/Facade'
-		,View : '/tipJS/tutorial/View'
-		,ViewExtend : '/tipJS/tutorial/ViewExtend'
+		,Builder : '/tipJS-designPattern/patterns/Builder'
 	}
 });
 

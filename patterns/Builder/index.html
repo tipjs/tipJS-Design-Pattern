@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+<title>tipJS.com - Javascript MVC Framework Design Pattern</title>
+<script src="../../tipJS/tipJS-MVC-1.24-dev.js"></script>
+<script>
+window.onload = function(){
+	tipJS.loadApp(["Builder"]);
+};
+</script>
+</head>
+<body>
+<h1>tipJS.com - Javascript MVC Framework <br />Design Pattern</h1>
+    <h1 id="contents"></h1><br/>
+    RSS feed url : <input type="radio" name="url" value="http://tipjs.com/feed" checked/>http://tipjs.com/feed
+    <input type="radio" name="url" value="http://site-a.com/rss" />http://site-a.com/rss<br/>
+    Display Type : <input type="radio" name="type" value="list" checked/>list
+    <input type="radio" name="type" value="checkbox" />checkbox
+    <input type="radio" name="type" value="radio" />radio<br/>
+    <input type="button" value="Get News List"
+    onclick="tipJS.action('Builder.list')"/>
+<h4><a href="define.js" target="_blank">define.js</a></h4>
+<h4>Builder pattern</h4>
+<ul>
+	<li>controllers</li>
+	<ul>
+		<li><a href="controllers/list.js" target="_blank">list.js</a></li>
+	</ul>
+</ul>
+<ul>
+	<li>models</li>
+	<ul>
+		<li><a href="models/NewsDirector.js" target="_blank">NewsDirector.js</a></li>
+		<li><a href="models/NewsBuilderImpl.js" target="_blank">NewsBuilderImpl.js</a></li>
+		<li><a href="models/RssBuilder.js" target="_blank">RssBuilder.js</a></li>
+		<li><a href="models/News.js" target="_blank">News.js</a></li>
+	</ul>
+</ul>
+<ul>
+	<li>template</li>
+	<ul>
+		<li><a href="tpl/list.html" target="_blank">list.html</a></li>
+		<li><a href="tpl/checkbox.html" target="_blank">checkbox.html</a></li>
+		<li><a href="tpl/radio.html" target="_blank">radio.html</a></li>
+	</ul>
+</ul>
+</body>
+</html>
