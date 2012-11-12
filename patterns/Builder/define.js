@@ -11,9 +11,7 @@ tipJS.define({
 	noCache:false,
 	name:"Builder",
 	controllers:[
-		"list.js",
-		"checkbox.js",
-		"radio.js"
+		"list.js"
 	],
 	models:[
 		"NewsDirector.js"
