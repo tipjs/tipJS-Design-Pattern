@@ -25,6 +25,7 @@ tipJS.config({
 		,FactoryMethod : '/tipJS-designPattern/patterns/FactoryMethod'
 		,Facade : '/tipJS-designPattern/patterns/Facade'
 		,Builder : '/tipJS-designPattern/patterns/Builder'
+		,FlyWeight : '/tipJS-designPattern/patterns/FlyWeight'
 	}
 });
 

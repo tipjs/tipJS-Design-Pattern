@@ -13,15 +13,10 @@ window.onload = function(){
 <body>
 <h1>tipJS.com - Javascript MVC Framework <br />Design Pattern</h1>
     <h1 id="contents"></h1><br/>
-    RSS feed url : <input type="radio" name="url" value="http://tipjs.com/feed" checked/>http://tipjs.com/feed
-    <input type="radio" name="url" value="http://site-a.com/rss" />http://site-a.com/rss<br/>
-    Display Type : <input type="radio" name="type" value="list" checked/>list
-    <input type="radio" name="type" value="checkbox" />checkbox
-    <input type="radio" name="type" value="radio" />radio<br/>
-    <input type="button" value="Get News List"
-    onclick="tipJS.action('Builder.list')"/>
+    <input type="button" value="Get News List" onclick="tipJS.action('FlyWeight.list')"/>
+    <input type="button" value="Get News List" onclick="tipJS.action('FlyWeight.detail')"/>
 <h4><a href="define.js" target="_blank">define.js</a></h4>
-<h4>Builder pattern</h4>
+<h4>Flyweight pattern</h4>
 <ul>
 	<li>controllers</li>
 	<ul>

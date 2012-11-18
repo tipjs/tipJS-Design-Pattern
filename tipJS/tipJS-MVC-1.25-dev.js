@@ -1,5 +1,5 @@
 /*
- * tipJS - OpenSource Javascript MVC Framework ver.1.24
+ * tipJS - OpenSource Javascript MVC Framework ver.1.25
  *
  * Copyright 2012.07 SeungHyun PAEK
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -9,7 +9,7 @@
 
 /* tipJS initialization */
 var tipJS = tipJS || {};
-tipJS.ver = tipJS.version = "1.24";
+tipJS.ver = tipJS.version = "1.25";
 (function() {
 	/**
 	 * overwrite Object 에 존재하는 속성 이외의 항목을 base Object의 속성과 병합
@@ -639,6 +639,10 @@ tipJS.ver = tipJS.version = "1.24";
 		__config__ = __mergeObject__(config, __TIPJS_TEMPLATE__.OBJECT_TEMPLATE.config);
 		if (tipJS.isDevelopment === null) {
 			var _hostname = window.location.hostname;
+			if (_hostname.length == 0) {
+				tipJS.isDevelopment = true;
+				return;
+			}
 			for (var i = __config__.developmentHostList.length; i--;) {
 				if (_hostname.match(__config__.developmentHostList[i]) !== null) {
 					tipJS.isDevelopment = true;
@@ -765,10 +769,9 @@ tipJS.ver = tipJS.version = "1.24";
 		html = html.replace(/\r\n/g, "\n");
 		html = html.replace(/\r/g, "\n");
 		html = html.replace(/\\/g, '\\\\');
-		html = html.replace(/\n/g, '\\n');
-		html = html.replace(/"/g, '\\"');
+		html = html.replace(/\n/g, '');
 
-		var _tokens = html.split("\\n"),
+		var _tokens = html.split("@>"),
 			_evalFunc = new Function("data", __compileTemplate__(_tokens));
 
 		return _evalFunc(data);
@@ -780,41 +783,47 @@ tipJS.ver = tipJS.version = "1.24";
 	 * @param tokens
 	 */
 	var __compileTemplate__ = function(tokens) {
-		var _ret = [], _types = [],
+		var _ret = [], _types = [], _newTokens = [],
 			_TYPE_PLANE = "PLANE", _TYPE_VALUE = "VALUE", _TYPE_PARSE = "PARSE",
 			_cmdPush = '__temp_HTML__.push(';
 
 		_ret.push('var __temp_HTML__ = [];');
 		for (var i = 0, len = tokens.length; i < len; i++) {
 			var _token = tokens[i];
-			_types.push(_TYPE_PLANE);
-			if (_token.indexOf("@>") > -1) {
-				if (_token.indexOf("<@=") > -1)
-					_types[i] = _TYPE_VALUE;
-				else if (_token.indexOf("<@") > -1)
-					_types[i] = _TYPE_PARSE;
-				else {
-					for (var j = _types.length - 1; j >= 0; j--) {
-						if (tokens[j].indexOf("<@") > -1 && _types[j] == _TYPE_PLANE) {
-							for (var k = j; k <= i; k++) {
-								_types[k] = _TYPE_PARSE;
-							}
-							break;
-						}
-					} // for j
+
+			if (_token.indexOf("<@=") > -1) {
+				var _tokens = _token.split("<@=");
+				if (_tokens.length > 1) {
+					_newTokens.push(_tokens[0].replace(/"/g, '\\"'));
+					_newTokens.push(_tokens[1]);
+					_types.push(_TYPE_PLANE);
+					_types.push(_TYPE_VALUE);
+				} else {
+					_newTokens.push(_tokens[0]);
+					_types.push(_TYPE_VALUE);
 				}
+			} else if (_token.indexOf("<@") > -1) {
+				var _tokens = _token.split("<@");
+				if (_tokens.length > 1) {
+					_newTokens.push(_tokens[0].replace(/"/g, '\\"'));
+					_newTokens.push(_tokens[1]);
+					_types.push(_TYPE_PLANE);
+					_types.push(_TYPE_PARSE);
+				} else {
+					_newTokens.push(_tokens[0]);
+					_types.push(_TYPE_PARSE);
+				}
+			} else {
+				_newTokens.push(_token.replace(/"/g, '\\"'));
+				_types.push(_TYPE_PLANE);
 			}
 		} // for i
-		for (var i = 0, len = _types.length; i < len; i++) {
-			var _token = tokens[i];
+		for (var i = 0, len = _newTokens.length; i < len; i++) {
+			var _token = _newTokens[i];
 			if (_types[i] == _TYPE_VALUE) {
-				_token = '"' + _token + '"';
-				_token = _token.replace(/<@=/g, '\"+');
-				_token = _token.replace(/@>/g, '+\"');
+				_token = '"\"+' + _token + '+\""';
 				_ret.push(_cmdPush + _token + ");");
 			} else if (_types[i] == _TYPE_PARSE) {
-				_token = _token.replace(/<@/g, '');
-				_token = _token.replace(/@>/g, '');
 				_ret.push(_token);
 			} else {
 				_token = '"' + _token + '"';
@@ -1172,7 +1181,7 @@ tipJS.ver = tipJS.version = "1.24";
 
 	for (var i = _scripts.length; i--;) {
 		_scriptSrc = _scripts[i].src;
-		_match = _scriptSrc.match(/tipJS-MVC-1\.24-dev\.js$/);
+		_match = _scriptSrc.match(/tipJS-MVC-1\.25-dev\.js$/);
 		if (_match) {
 			_filepath = _scriptSrc.substring(0, _scriptSrc.length - _match[0].length);
 			break;
