@@ -11,7 +11,7 @@ tipJS.model({
 	__name : "FlyWeight.ItemPool",
 
 	_pool : null,
-	init : function() {
+	__init : function() {
 		this._pool = {};
 		var item01 = this.loadModel("Item");
 		item01.init("A0001", "MacBook Air 2012", 1000);
@@ -23,9 +23,16 @@ tipJS.model({
 		
 		var item03 = this.loadModel("Item");
 		item03.init("A0003", "MacBook Pro Retina 2012", 3000);
-		this._pool["A0003"] = this.loadModel("Item");
+		this._pool["A0003"] = item03;
 	},
 	getItem : function(code) {
 		return this._pool[code];
+	},
+	getItemList : function() {
+		var itemList = [];
+		for (var key in this._pool) {
+			itemList.push(this._pool[key]);
+		}
+		return itemList;
 	}
 });

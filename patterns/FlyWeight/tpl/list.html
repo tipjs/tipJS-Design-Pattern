@@ -1,5 +1,9 @@
 <ul>
 <@ for (var i=0; i<data.length; i++) { @>
-	<li><@= data[i].title @></li>
+	<li>
+		<a href="javascript:tipJS.action('FlyWeight.detail','<@= data[i].code @>')">
+			<@= data[i].name @>
+		</a>
+	</li>
 <@ } @>
 </ul>

@@ -6,38 +6,35 @@
 <script src="../../tipJS/tipJS-MVC-1.25-dev.js"></script>
 <script>
 window.onload = function(){
-	tipJS.loadApp(["Builder"]);
+	tipJS.loadApp(["FlyWeight"]);
 };
 </script>
 </head>
 <body>
 <h1>tipJS.com - Javascript MVC Framework <br />Design Pattern</h1>
-    <h1 id="contents"></h1><br/>
-    <input type="button" value="Get News List" onclick="tipJS.action('FlyWeight.list')"/>
-    <input type="button" value="Get News List" onclick="tipJS.action('FlyWeight.detail')"/>
+    <h2 id="contents"></h2><br/>
+    <input type="button" value="Get List" onclick="tipJS.action('FlyWeight.list')"/>
 <h4><a href="define.js" target="_blank">define.js</a></h4>
 <h4>Flyweight pattern</h4>
 <ul>
 	<li>controllers</li>
 	<ul>
 		<li><a href="controllers/list.js" target="_blank">list.js</a></li>
+		<li><a href="controllers/detail.js" target="_blank">detail.js</a></li>
 	</ul>
 </ul>
 <ul>
 	<li>models</li>
 	<ul>
-		<li><a href="models/NewsDirector.js" target="_blank">NewsDirector.js</a></li>
-		<li><a href="models/NewsBuilderImpl.js" target="_blank">NewsBuilderImpl.js</a></li>
-		<li><a href="models/RssBuilder.js" target="_blank">RssBuilder.js</a></li>
-		<li><a href="models/News.js" target="_blank">News.js</a></li>
+		<li><a href="models/Item.js" target="_blank">Item.js</a></li>
+		<li><a href="models/ItemPool.js" target="_blank">ItemPool.js</a></li>
 	</ul>
 </ul>
 <ul>
 	<li>template</li>
 	<ul>
 		<li><a href="tpl/list.html" target="_blank">list.html</a></li>
-		<li><a href="tpl/checkbox.html" target="_blank">checkbox.html</a></li>
-		<li><a href="tpl/radio.html" target="_blank">radio.html</a></li>
+		<li><a href="tpl/detail.html" target="_blank">detail.html</a></li>
 	</ul>
 </ul>
 </body>
